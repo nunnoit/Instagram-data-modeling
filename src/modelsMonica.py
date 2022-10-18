@@ -77,7 +77,7 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer,  ForeignKey('user.id'))
     comment_relationship = relationship("comment")
-    comment_relationship = relationship("media")
+    media_relationship = relationship("media")
 
 class Media(Base):
     __tablename__ = 'media'
