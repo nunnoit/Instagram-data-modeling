@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -57,8 +57,21 @@ class Post(Base):
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('person.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
 
+
+
+class Media(Base):9
+    __tablename__ = 'media'
+    # Here we define columns for the table person
+    # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
+    type = Column(Enum, nullable=False)
+    url = Column(String(250), ForeignKey('user.id'))
+    post_id = Column(Integer, ForeignKey('person.id'))
+
+
+#test
 
 ## Draw from SQLAlchemy base
 try:
